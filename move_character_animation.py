@@ -40,15 +40,21 @@ running = True
 x, y = WIDTH // 2, HEIGHT // 2
 frame = 0
 dir_x = 0
+face = 1  # 1: 오른쪽, -1: 왼쪽
 
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
-    character.clip_draw(frame * 100, IDLE_RIGHT, 100, 100, x, y)
+    row = IDLE_RIGHT if face == 1 else IDLE_LEFT
+    character.clip_draw(frame * 100, row, 100, 100, x, y)
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
     x += dir_x * SPEED
+    if dir_x > 0:
+        face = 1
+    elif dir_x < 0:
+        face = -1
     delay(0.05)
 
 close_canvas()
