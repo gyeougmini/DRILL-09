@@ -15,11 +15,13 @@ def handle_events():
 
 
 open_canvas(WIDTH, HEIGHT)
+ground = load_image('TUK_GROUND.png')
 
 running = True
 
 while running:
     clear_canvas()
+    ground.draw(WIDTH // 2, HEIGHT // 2)
     update_canvas()
     handle_events()
     delay(0.05)
