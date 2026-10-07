@@ -12,7 +12,7 @@ SPEED = 5
 
 
 def handle_events():
-    global running, dir_x
+    global running, dir_x, dir_y
 
     events = get_events()
     for event in events:
@@ -25,11 +25,19 @@ def handle_events():
                 dir_x -= 1
             elif event.key == SDLK_RIGHT:
                 dir_x += 1
+            elif event.key == SDLK_UP:
+                dir_y += 1
+            elif event.key == SDLK_DOWN:
+                dir_y -= 1
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_LEFT:
                 dir_x += 1
             elif event.key == SDLK_RIGHT:
                 dir_x -= 1
+            elif event.key == SDLK_UP:
+                dir_y -= 1
+            elif event.key == SDLK_DOWN:
+                dir_y += 1
 
 
 open_canvas(WIDTH, HEIGHT)
@@ -39,13 +47,13 @@ character = load_image('animation_sheet.png')
 running = True
 x, y = WIDTH // 2, HEIGHT // 2
 frame = 0
-dir_x = 0
+dir_x, dir_y = 0, 0
 face = 1  # 1: 오른쪽, -1: 왼쪽
 
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
-    if dir_x != 0:
+    if dir_x != 0 or dir_y != 0:
         row = RUN_RIGHT if face == 1 else RUN_LEFT
     else:
         row = IDLE_RIGHT if face == 1 else IDLE_LEFT
@@ -54,6 +62,7 @@ while running:
     handle_events()
     frame = (frame + 1) % 8
     x += dir_x * SPEED
+    y += dir_y * SPEED
     if dir_x > 0:
         face = 1
     elif dir_x < 0:
