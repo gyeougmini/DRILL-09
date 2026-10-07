@@ -8,6 +8,8 @@ IDLE_LEFT = 200
 RUN_RIGHT = 100
 RUN_LEFT = 0
 
+SPEED = 5
+
 
 def handle_events():
     global running, dir_x
@@ -46,6 +48,7 @@ while running:
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
+    x += dir_x * SPEED
     delay(0.05)
 
 close_canvas()
