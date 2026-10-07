@@ -9,8 +9,9 @@ RUN_RIGHT = 100
 RUN_LEFT = 0
 
 SPEED = 5
-HALF_W = 50
-HALF_H = 50
+# 프레임 중심에서 실제 캐릭터 외곽까지의 거리 (전체 프레임 기준 최대값)
+HALF_W = 34
+HALF_H = 43
 
 
 def handle_events():
