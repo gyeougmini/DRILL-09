@@ -2,6 +2,12 @@ from pico2d import *
 
 WIDTH, HEIGHT = 1280, 1024
 
+# animation_sheet.png 행의 clip y 좌표 (아래쪽이 0)
+IDLE_RIGHT = 300
+IDLE_LEFT = 200
+RUN_RIGHT = 100
+RUN_LEFT = 0
+
 
 def handle_events():
     global running
@@ -25,7 +31,7 @@ frame = 0
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
-    character.clip_draw(frame * 100, 300, 100, 100, x, y)
+    character.clip_draw(frame * 100, IDLE_RIGHT, 100, 100, x, y)
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
