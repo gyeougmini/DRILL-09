@@ -45,7 +45,10 @@ face = 1  # 1: 오른쪽, -1: 왼쪽
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
-    row = IDLE_RIGHT if face == 1 else IDLE_LEFT
+    if dir_x != 0:
+        row = RUN_RIGHT if face == 1 else RUN_LEFT
+    else:
+        row = IDLE_RIGHT if face == 1 else IDLE_LEFT
     character.clip_draw(frame * 100, row, 100, 100, x, y)
     update_canvas()
     handle_events()
