@@ -16,12 +16,15 @@ def handle_events():
 
 open_canvas(WIDTH, HEIGHT)
 ground = load_image('TUK_GROUND.png')
+character = load_image('animation_sheet.png')
 
 running = True
+x, y = WIDTH // 2, HEIGHT // 2
 
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
+    character.clip_draw(0, 300, 100, 100, x, y)
     update_canvas()
     handle_events()
     delay(0.05)
