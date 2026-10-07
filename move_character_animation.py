@@ -20,13 +20,15 @@ character = load_image('animation_sheet.png')
 
 running = True
 x, y = WIDTH // 2, HEIGHT // 2
+frame = 0
 
 while running:
     clear_canvas()
     ground.draw(WIDTH // 2, HEIGHT // 2)
-    character.clip_draw(0, 300, 100, 100, x, y)
+    character.clip_draw(frame * 100, 300, 100, 100, x, y)
     update_canvas()
     handle_events()
+    frame = (frame + 1) % 8
     delay(0.05)
 
 close_canvas()
