@@ -10,6 +10,7 @@ RUN_LEFT = 0
 
 SPEED = 5
 HALF_W = 50
+HALF_H = 50
 
 
 def handle_events():
@@ -65,6 +66,7 @@ while running:
     x += dir_x * SPEED
     y += dir_y * SPEED
     x = clamp(HALF_W, x, WIDTH - HALF_W)
+    y = clamp(HALF_H, y, HEIGHT - HALF_H)
     if dir_x > 0:
         face = 1
     elif dir_x < 0:
